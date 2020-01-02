@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import test from './TestReducer'
 
-const IndexReducer = combineReducers ({
+const indexReducer = combineReducers ({
     test:test
 })
-export default IndexReducer
+export default indexReducer
