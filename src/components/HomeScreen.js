@@ -10,7 +10,7 @@ class HomeScreen extends Component {
     }
     process = (index) => {
         const datas = this.props.test.data
-        var day = datas.filter(function (data) {
+        const day = datas.filter(function (data) {
             return data.day_of_week == index && data.active == 1
         })
         const sorted = day.sort(function (a, b) {
