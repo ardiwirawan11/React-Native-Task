@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Content } from 'native-base'
 
-class ThursdayScreen extends Component {
+class ResultScreen extends Component {
     render() {
         return (
             <Container>
@@ -14,4 +14,4 @@ class ThursdayScreen extends Component {
 
 }
 
-export default ThursdayScreen
+export default ResultScreen

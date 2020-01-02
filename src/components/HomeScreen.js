@@ -8,9 +8,9 @@ class HomeScreen extends Component {
     componentDidMount() {
         this.props.getData()
     }
-    process = (index) => {
+    processData = (index) => {
         const datas = this.props.test.data
-        const day = datas.filter(function (data) {
+        var day = datas.filter(function (data) {
             return data.day_of_week == index && data.active == 1
         })
         const sorted = day.sort(function (a, b) {
@@ -33,28 +33,8 @@ class HomeScreen extends Component {
                 </Card>
             )
         })
-        switch (index) {
-            case 0:
-                this.props.navigation.navigate('Sunday', { dataa: dataa })
-                break
-            case 1:
-                this.props.navigation.navigate('Monday', { dataa: dataa })
-                break
-            case 2:
-                this.props.navigation.navigate('Tuesday', { dataa: dataa })
-                break
-            case 3:
-                this.props.navigation.navigate('Wednesday', { dataa: dataa })
-                break
-            case 4:
-                this.props.navigation.navigate('Thursday', { dataa: dataa })
-                break
-            case 5:
-                this.props.navigation.navigate('Friday', { dataa: dataa })
-                break
-            case 6:
-                this.props.navigation.navigate('Saturday', { dataa: dataa })
-        }
+        this.props.navigation.navigate('Result', { dataa: dataa })
+
     }
     render() {
         return (
@@ -64,25 +44,25 @@ class HomeScreen extends Component {
                         <Spinner></Spinner>
                     </View> :
                     <Content>
-                        <Button onPress={() => this.process(1)} style={style.button}>
+                        <Button onPress={() => this.processData(1)} style={style.button}>
                             <Text>Monday</Text>
                         </Button>
-                        <Button onPress={() => this.process(2)} style={style.button}>
+                        <Button onPress={() => this.processData(2)} style={style.button}>
                             <Text>Tuesday</Text>
                         </Button>
-                        <Button onPress={() => this.process(3)} style={style.button}>
+                        <Button onPress={() => this.processData(3)} style={style.button}>
                             <Text>Wednesday</Text>
                         </Button>
-                        <Button onPress={() => this.process(4)} style={style.button}>
+                        <Button onPress={() => this.processData(4)} style={style.button}>
                             <Text>Thursday</Text>
                         </Button>
-                        <Button onPress={() => this.process(5)} style={style.button}>
+                        <Button onPress={() => this.processData(5)} style={style.button}>
                             <Text>Friday</Text>
                         </Button>
-                        <Button onPress={() => this.process(6)} style={style.button}>
+                        <Button onPress={() => this.processData(6)} style={style.button}>
                             <Text>Saturday</Text>
                         </Button>
-                        <Button onPress={() => this.process(0)} style={style.button}>
+                        <Button onPress={() => this.processData(0)} style={style.button}>
                             <Text>Sunday</Text>
                         </Button>
                     </Content>
