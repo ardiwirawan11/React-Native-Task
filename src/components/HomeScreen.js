@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 import { Card, CardItem, Body, Spinner, Container, Content, Button } from 'native-base'
 import { connect } from 'react-redux'
 import { getData } from '../redux/action/TestAction'
 
 class HomeScreen extends Component {
-    // componentDidMount() {
-    //     this.props.getData()
-    // }
+    componentDidMount() {
+        this.props.getData()
+    }
     process = (index) => {
         const datas = this.props.test.data
         var day = datas.filter(function (data) {
@@ -18,7 +18,7 @@ class HomeScreen extends Component {
         })
         const dataa = sorted.map((item) => {
             return (
-                <Card key={item.provider_id}>
+                <Card key={item.id}>
                     <CardItem>
                         <Body>
                             <Text>provider_id : {item.provider_id}</Text>
@@ -59,34 +59,45 @@ class HomeScreen extends Component {
     render() {
         return (
             <Container>
-                <Content>
-                    <Button onPress={() => this.process(1)}>
-                        <Text>Monday</Text>
-                    </Button>
-                    <Button onPress={() => this.process(2)}>
-                        <Text>Tuesday</Text>
-                    </Button>
-                    <Button onPress={() => this.process(3)}>
-                        <Text>Wednesday</Text>
-                    </Button>
-                    <Button onPress={() => this.process(4)}>
-                        <Text>Thursday</Text>
-                    </Button>
-                    <Button onPress={() => this.process(5)}>
-                        <Text>Friday</Text>
-                    </Button>
-                    <Button onPress={() => this.process(6)}>
-                        <Text>Saturday</Text>
-                    </Button>
-                    <Button onPress={() => this.process(0)}>
-                        <Text>Sunday</Text>
-                    </Button>
-                </Content>
+                {this.props.test.loading == true ?
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <Spinner></Spinner>
+                    </View> :
+                    <Content>
+                        <Button onPress={() => this.process(1)} style={style.button}>
+                            <Text>Monday</Text>
+                        </Button>
+                        <Button onPress={() => this.process(2)} style={style.button}>
+                            <Text>Tuesday</Text>
+                        </Button>
+                        <Button onPress={() => this.process(3)} style={style.button}>
+                            <Text>Wednesday</Text>
+                        </Button>
+                        <Button onPress={() => this.process(4)} style={style.button}>
+                            <Text>Thursday</Text>
+                        </Button>
+                        <Button onPress={() => this.process(5)} style={style.button}>
+                            <Text>Friday</Text>
+                        </Button>
+                        <Button onPress={() => this.process(6)} style={style.button}>
+                            <Text>Saturday</Text>
+                        </Button>
+                        <Button onPress={() => this.process(0)} style={style.button}>
+                            <Text>Sunday</Text>
+                        </Button>
+                    </Content>
+                }
             </Container>
         )
     }
 }
 
+const style = StyleSheet.create({
+    button: {
+        justifyContent: 'center',
+        marginVertical: 10
+    }
+})
 const mapStateToProps = state => ({
     test: state.test
 
