@@ -12,6 +12,7 @@ export default (state = initialState, action) => {
                 loading: true
             }
         case SHOW_TEST_DATA:
+                console.log('show')
             return {
                 ...state,
                 loading: false,
@@ -25,6 +26,7 @@ export default (state = initialState, action) => {
             }
 
         case SUCCESS_TEST_DATA:
+            console.log('suces')
             return {
                 ...state,
                 loading: false,
